@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <h1>List of finished TODOs</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <div class="list-group">
+				{% for todo in todos %}
+					<a href="{% url 'todo_view' todo.id %}" class="list-group-item list-group-item-action{% if todo.priority %} list-group-item-info{% endif %}">
+					<b>{{ todo.title }}</b>	- Completed {{ todo.datecompleted|date:'M j Y H:i' }}
+					</a>
+				{% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
